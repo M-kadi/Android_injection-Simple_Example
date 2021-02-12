@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    >
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"/>
+
+    <Button
+        android:textAllCaps="false"
+        android:text="Test ClassConstructor"
+        android:id="@+id/btnClassConstructor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_marginEnd="7dp"
+        android:textAllCaps="false"
+        android:id="@+id/btnSqlite"
+        android:text="Test Sqlite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:textAllCaps="false"
+        android:text="Test SharedPreferences"
+        android:id="@+id/btnSharedPreferences"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!--    -->
+    <TextView
+
+        style="@style/text_view_separate_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test ViewModel"
+        />
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_marginEnd="5dp"
+            android:id="@+id/txt1122"
+            android:text="mmmm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:textAllCaps="false"
+            android:id="@+id/btn22"
+            android:text="counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <TextView
+        style="@style/text_view_separate_style"
+        android:id="@+id/textview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test Room"
+        />
+
+
+
+    <include layout="@layout/list_user"/>
+
+</LinearLayout>

@@ -1,0 +1,4 @@
+include ':hilt'
+include ':koin'
+include ':dagger'
+rootProject.name = "TestDagger_Koin_Hilt"

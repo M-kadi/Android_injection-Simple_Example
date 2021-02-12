@@ -1,0 +1,373 @@
+TestDagger_Koin_Hilt
+====================
+----------------------------------------------------------------------------
+Dagger 2
+----------------------------------------------------------------------------
+*** @Inject constructor of a class
+
+@Module
+@Provides @Singleton : to a class if not (@Inject constructor of a class)
+
+@Singleton
+@Component(modules = [MyModule::class])
+    fun inject(target: MainActivity)
+
+
+MyApp
+        myComponent = DaggerMyComponent
+            .builder().build()
+
+
+MainActivity
+    (application as MyApp).myComponent?.inject(this)
+    @Inject
+    lateinit var car10: Car3
+
+----
+*** Inject SharedPreferences
+-- need Context for create instance of SharedPreferences
+-- @Provides context in @Module
+   and in
+     DaggerMyComponent.builder().contextModule(ContextModule(this))
+   pass the context
+
+--------
+*** Inject Constant Value
+-- in Module
+    @Provides
+    @Named("constant_str")
+    fun provideConstantStrString(): String = "my constant_str"
+-- in Activity
+    @Inject
+    @field:Named("constant_str")
+    lateinit var constant_str: String
+
+--------
+*** Inject ViewModel
+-- class MyViewModel @Inject constructor(
+       private val data: Data
+    )
+-- @Singleton
+   class Data @Inject constructor(): ViewModel()
+-- @Singleton
+   class ViewModelFactory @Inject constructor(private val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>>) : ViewModelProvider.Factory {
+-- @Module
+   abstract class ViewModelModule
+   @Binds bindViewModelFactory
+   @Binds postMyViewModel
+
+== add @Module ViewModelModule in Component
+== in MainActivity : use viewModel by viewModelFactory
+
+
+----
+*** Inject Sqlite
+--- class User
+--- class DbHelper @Inject constructor(@ApplicationContext context: Context?,
+                                       @DatabaseInfo dbName: String?,
+                                       @DatabaseInfo version: Int?) : SQLiteOpenHelper(context, dbName, null, version!!) {
+
+== in Module
+    @Qualifier
+    @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+    annotation class ApplicationContext
+
+    @Qualifier
+    @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+    annotation class DatabaseInfo
+
+    @Provides
+    @DatabaseInfo
+    fun provideDatabaseName(): String {
+        return "demo-dagger.db"
+    }
+
+    @Provides
+    @DatabaseInfo
+    fun provideDatabaseVersion(): Int {
+        return 2
+    }
+
+
+=== in MainActivity
+    @Inject
+    lateinit var dbHelper: DbHelper
+
+---------
+*** Inject room
+-- @Entity   class User
+-- @Dao      interface UserDao
+-- @Database abstract class UserRoomDatabase
+--           class UserRepository
+
+== in Module
+    @Provides
+    @Singleton
+    fun provideUserDao(@ApplicationContext appContext: Context): UserDao =
+        UserRoomDatabase.getDatabase(appContext).userDao()
+
+    @Provides
+    @Singleton
+    fun provideUserRepository(userDao: UserDao): UserRepository = UserRepository(userDao)
+
+=== in MainActivity
+    @Inject
+    lateinit var userDao : UserDao
+
+    @Inject
+    lateinit var repository : UserRepository
+
+
+----------
+*** Inject room : recyclerview
+--  class UserListAdapter(context: Context)
+--  class UsersViewModel(private val repository: UserRepository)
+
+== in Module
+        @Provides
+        @Singleton
+        fun provideUsersViewModel(userRepository: UserRepository): UsersViewModel = UsersViewModel(userRepository)
+
+=== in MainActivity
+        @Inject
+        lateinit var usersViewModel : UsersViewModel
+
+
+    usersViewModel.allUsers.observe(this@MainActivity) { users ->
+                adapter.setWords(users)
+    }
+
+    usersViewModel.insert(user)
+
+----------------------------------------------------------------------------
+Dagger-hilt
+----------------------------------------------------------------------------
+*** @Inject constructor of a class
+
+@Module
+@InstallIn(SingletonComponent::class)
+@Provides @Singleton : to a class if not (@Inject constructor of a class)
+
+
+@HiltAndroidApp
+MyApp
+
+@AndroidEntryPoint
+MainActivity
+    @Inject
+    lateinit var car10: Car3
+
+*** When use : @Inject constructor of a class with parameter
+use as Dagger 2:
+================
+*** @Inject constructor of a class
+
+@Module
+@Provides @Singleton : to a class if not (@Inject constructor of a class)
+
+@Singleton
+@Component(modules = [MyModule::class])
+    fun inject(target: MainActivity)
+
+in MyApp
+        myComponent = DaggerMyComponent
+            .builder().build()
+
+in MainActivity
+    (application as MyApp).myComponent?.inject(this)
+    @Inject
+    lateinit var car1: Car1
+
+
+----
+*** Inject SharedPreferences
+-- need Context for create instance of SharedPreferences
+-- directly use : @ApplicationContext
+
+----
+*** Inject Constant Value
+use as Dagger 2:
+-- in Module
+    @Provides
+    @Named("constant_str")
+    fun provideConstantStrString(): String = "my constant_str"
+-- in Activity
+    @Inject
+    @field:Named("constant_str")
+    lateinit var constant_str: String
+
+----
+*** Inject ViewModel
+-- class MyViewModel @Inject constructor(
+       private val data: Data
+    )
+-- @Singleton
+   class Data @Inject constructor(): ViewModel()
+
+== in MainActivity
+       private val viewModel : MyViewModel by viewModels()
+
+----
+*** Inject Sqlite
+--- class User
+--- class DbHelper  constructor(context: Context?,
+                                dbName: String?,
+                                version: Int?) : SQLiteOpenHelper(context, dbName, null, version!!) {
+
+== in Module
+    @Provides
+    @Singleton
+    fun provideDbHelper(@ApplicationContext context : Context): DbHelper = DbHelper(context, "demo-dagger.db", 2)
+
+
+=== in MainActivity
+    @Inject
+    lateinit var dbHelper: DbHelper
+
+
+*** Inject room
+-- @Entity   class User
+-- @Dao      interface UserDao
+-- @Database abstract class UserRoomDatabase
+--           class UserRepository
+
+== in Module
+    @Provides
+    @Singleton
+    fun provideUserDao(@ApplicationContext appContext: Context): UserDao =
+        UserRoomDatabase.getDatabase(appContext).userDao()
+
+    @Provides
+    @Singleton
+    fun provideUserRepository(userDao: UserDao): UserRepository = UserRepository(userDao)
+
+=== in MainActivity
+    @Inject
+    lateinit var userDao : UserDao
+
+    @Inject
+    lateinit var repository : UserRepository
+
+
+
+----------
+*** Inject room : recyclerview
+--  class UserListAdapter(context: Context)
+--  class UsersViewModel @ViewModelInject constructor(private val repository: UserRepository)
+
+=== in MainActivity
+    private val usersViewModel : UsersViewModel by viewModels()
+
+    usersViewModel.allUsers.observe(this@MainActivity) { users ->
+                adapter.setWords(users)
+    }
+
+    usersViewModel.insert(user)
+
+
+
+----------------------------------------------------------------------------
+koin
+----------------------------------------------------------------------------
+*** Inject constructor of a class
+val MyModule = module {
+    single { Car3() }
+    single{ (name : String) -> Car1(name) } //constructor of a class with parameter
+
+in MyApp
+        startKoin {
+//            androidContext(this@App)
+            //modules(listOf(appModule, repoModule, viewModelModule))
+            modules(listOf(MyModule))
+        }
+
+
+in MainActivity
+        val car3 : Car3 by inject()
+        val car1 : Car1 by inject { parametersOf("hello") }
+
+----
+*** Inject SharedPreferences
+-- need Context for create instance of SharedPreferences
+-- directly use : androidContext()
+
+----
+*** Inject Constant Value
+use as Dagger 2:
+-- in Module
+    @Provides
+    @Named("constant_str")
+    fun provideConstantStrString(): String = "my constant_str"
+-- in Activity
+    @Inject
+    @field:Named("constant_str")
+    lateinit var constant_str: String
+
+
+----
+*** Inject ViewModel
+-- class MyViewModel constructor(
+       private val data: Data
+    )
+-- class Data : ViewModel()
+-- val MyViewModelModule = module
+
+== in App
+  startKoin
+     modules => MyViewModelModule
+== in Module
+      single { Data() }
+== in MainActivity
+       private val myViewModel : MyViewModel by viewModel()
+
+
+----
+*** Inject Sqlite
+--- class User
+--- class DbHelper constructor( context: Context?,
+                                dbName: String?,
+                                version: Int?) : SQLiteOpenHelper(context, dbName, null, version!!) {
+
+== in Module
+    single { DbHelper(androidContext(),"demo-koin.db",2) }
+=== in MainActivity
+    val dbHelper : DbHelper by inject()
+
+
+----------
+*** Inject room
+-- @Entity   class User
+-- @Dao      interface UserDao
+-- @Database abstract class UserRoomDatabase
+--           class UserRepository
+
+== in Module
+    factory { UserRoomDatabase.getDatabase(androidApplication()).userDao() }
+    factory { UserRepository(get()) }
+
+=== in MainActivity
+    val userDao : UserDao by inject()
+
+    val repository: UserRepository by inject()
+
+----------
+*** Inject room : recyclerview
+--  class UserListAdapter(context: Context)
+--  class UsersViewModel(private val repository: UserRepository)
+
+== in Module
+    viewModel {
+            UsersViewModel(get())
+        }
+=== in MainActivity
+    private val usersViewModel : UsersViewModel by viewModel()
+
+    usersViewModel.allUsers.observe(this@MainActivity) { users ->
+                adapter.setWords(users)
+    }
+
+    usersViewModel.insert(user)
+
+
+    room
+    https://blog.ippon.tech/android-di-from-dagger-to-koin/
