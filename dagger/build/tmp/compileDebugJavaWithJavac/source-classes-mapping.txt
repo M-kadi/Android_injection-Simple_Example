@@ -1,0 +1,58 @@
+com/example/dagger/BuildConfig.java
+ com.example.dagger.BuildConfig
+com/example/dagger/ContextModule_ProvideContextFactory.java
+ com.example.dagger.ContextModule_ProvideContextFactory
+com/example/dagger/ContextModule_ProvideDatabaseNameFactory.java
+ com.example.dagger.ContextModule_ProvideDatabaseNameFactory
+com/example/dagger/ContextModule_MembersInjector.java
+ com.example.dagger.ContextModule_MembersInjector
+com/example/dagger/MyModule_ProvideUsersViewModelFactory.java
+ com.example.dagger.MyModule_ProvideUsersViewModelFactory
+com/example/dagger/sqlite/DbHelper_Factory.java
+ com.example.dagger.sqlite.DbHelper_Factory
+com/example/dagger/dataModule/MyViewModel_Factory.java
+ com.example.dagger.dataModule.MyViewModel_Factory
+com/example/dagger/room/UserDao_Impl.java
+ com.example.dagger.room.UserDao_Impl
+ com.example.dagger.room.UserDao_Impl$1
+ com.example.dagger.room.UserDao_Impl$2
+ com.example.dagger.room.UserDao_Impl$3
+ com.example.dagger.room.UserDao_Impl$4
+ com.example.dagger.room.UserDao_Impl$5
+com/example/dagger/MyModule_ProvideUserDaoFactory.java
+ com.example.dagger.MyModule_ProvideUserDaoFactory
+com/example/dagger/MyModule_ProvideUserRepositoryFactory.java
+ com.example.dagger.MyModule_ProvideUserRepositoryFactory
+com/example/dagger/ContextModule_ProvideDatabaseVersionFactory.java
+ com.example.dagger.ContextModule_ProvideDatabaseVersionFactory
+com/example/dagger/dataModule/ViewModelFactory_Factory.java
+ com.example.dagger.dataModule.ViewModelFactory_Factory
+com/example/dagger/Car2_Factory.java
+ com.example.dagger.Car2_Factory
+ com.example.dagger.Car2_Factory$InstanceHolder
+com/example/dagger/dataModule/Data_Factory.java
+ com.example.dagger.dataModule.Data_Factory
+ com.example.dagger.dataModule.Data_Factory$InstanceHolder
+com/example/dagger/Car1_Factory.java
+ com.example.dagger.Car1_Factory
+com/example/dagger/ContextModule_ProvideSharedPreferencesFactory.java
+ com.example.dagger.ContextModule_ProvideSharedPreferencesFactory
+com/example/dagger/MySharedPreferences_Factory.java
+ com.example.dagger.MySharedPreferences_Factory
+com/example/dagger/MainActivity_MembersInjector.java
+ com.example.dagger.MainActivity_MembersInjector
+com/example/dagger/MyModule_ProvideCar3Factory.java
+ com.example.dagger.MyModule_ProvideCar3Factory
+com/example/dagger/MyModule_ProvideCar4Factory.java
+ com.example.dagger.MyModule_ProvideCar4Factory
+com/example/dagger/room/UserRoomDatabase_Impl.java
+ com.example.dagger.room.UserRoomDatabase_Impl
+ com.example.dagger.room.UserRoomDatabase_Impl$1
+com/example/dagger/MyModule_ProvideConstantStrStringFactory.java
+ com.example.dagger.MyModule_ProvideConstantStrStringFactory
+com/example/dagger/DaggerMyComponent.java
+ com.example.dagger.DaggerMyComponent
+ com.example.dagger.DaggerMyComponent$1
+ com.example.dagger.DaggerMyComponent$Builder
+ com.example.dagger.DaggerMyComponent$MySubComponentFactoryFactory
+ com.example.dagger.DaggerMyComponent$MySubComponentFactoryImpl

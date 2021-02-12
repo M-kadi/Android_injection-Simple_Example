@@ -1,0 +1,4 @@
+#Sat Feb 13 00:28:25 EET 2021
+base.0=/Users/mohammed/AndroidStudioProjects/TestDagger_Koin_Hilt/koin/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
