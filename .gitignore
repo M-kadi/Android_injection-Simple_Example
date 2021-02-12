@@ -1,6 +1,5 @@
 *.iml
 .gradle
-gradle
 /local.properties
 /.idea/caches
 /.idea/libraries
@@ -8,7 +7,6 @@ gradle
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
-/.idea/
 .DS_Store
 /build
 /captures
@@ -18,15 +16,3 @@ local.properties
 /dagger/build
 /hilt/build
 /koin/build
-
-.gitignore
-/.gitignore
-    .idea/
-    app/
-    build.gradle
-    gradle.properties
-    gradle/
-    /gradle/
-    gradlew
-    gradlew.bat
-    settings.gradle
