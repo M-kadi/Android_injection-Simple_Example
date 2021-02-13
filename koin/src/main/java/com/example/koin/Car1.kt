@@ -7,10 +7,10 @@ import androidx.lifecycle.ViewModelProvider
 class Car1 constructor(var name: String){
 
     fun maker() {
-        Log.i("ooooo","maker car1 $name " + this)
+        Log.i("ooooo","maker car1 $name $this")
     }
 
     init {
-        Log.d("ooooo", "car1 Constructor ----okokok---------------------------- $name")
+        Log.d("ooooo", "car1 Constructor ----okokok------------- $name $this")
     }
 }

@@ -6,9 +6,10 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 // inject ViewModel
 val MyViewModelModule = module {
+    // inject ViewModel
+    single { Data() }
+
     viewModel {
         MyViewModel(get())
     }
-
-
 }

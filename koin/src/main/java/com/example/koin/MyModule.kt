@@ -18,8 +18,6 @@ import org.koin.dsl.module
 
 val MyModule = module {
 
-    // inject ViewModel
-    single { Data() }
 
     single { Car3() }
     single { Car2() }

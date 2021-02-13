@@ -7,9 +7,7 @@ class MySharedPreferences @Inject constructor(private val mSharedPreferences: Sh
     fun putData(key: String?, data: Int) {
         mSharedPreferences.edit().putInt(key, data).apply()
     }
-
     fun getData(key: String?): Int {
         return mSharedPreferences.getInt(key, 0)
     }
-
 }

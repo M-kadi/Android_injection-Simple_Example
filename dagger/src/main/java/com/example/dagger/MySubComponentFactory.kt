@@ -11,8 +11,6 @@ import javax.inject.Singleton
 @Subcomponent(modules = [MyModule::class, ViewModelModule::class])
 interface MySubComponentFactory {
 
-//    fun inject(viewModel: MyViewModel)
-
     fun inject(target: MainActivity)
 
     @Subcomponent.Factory

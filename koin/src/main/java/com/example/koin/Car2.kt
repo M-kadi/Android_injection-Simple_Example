@@ -5,7 +5,7 @@ import android.util.Log
 
 class Car2 {
     fun maker() {
-        Log.i("ooooo","maker car2 " + this)
+        Log.i("ooooo","maker car2 $this")
     }
 
 }

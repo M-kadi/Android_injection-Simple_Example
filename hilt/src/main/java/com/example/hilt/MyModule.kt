@@ -2,7 +2,6 @@ package com.example.hilt
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.room.Room
 import com.example.hilt.room.UserDao
 import com.example.hilt.room.UserRepository
 import com.example.hilt.room.UserRoomDatabase
@@ -14,7 +13,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Named
 import javax.inject.Singleton
-
     @Module
     @InstallIn(SingletonComponent::class)
     class MyModule {

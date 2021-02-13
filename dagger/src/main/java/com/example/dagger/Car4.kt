@@ -9,11 +9,11 @@ import javax.inject.Named
 class Car4 constructor(@Named("driver name") var name: String){
 
     fun maker() {
-        Log.i("ooooo", "maker car4 $name " + this)
+        Log.i("ooooo", "maker car4 $name $this")
     }
 
 
     init {
-        Log.d("TAG", "Car4 Constructor ----okokok---------------------------- $name")
+        Log.d("TAG", "Car4 Constructor ----okokok-------------- $name")
     }
 }

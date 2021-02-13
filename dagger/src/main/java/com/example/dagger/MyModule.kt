@@ -10,7 +10,7 @@ import dagger.Provides
 import javax.inject.Named
 import javax.inject.Singleton
 
-@Module //(includes = [(PumpModule::class)])
+@Module
 internal class MyModule {
 
 

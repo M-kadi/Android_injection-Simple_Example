@@ -24,14 +24,9 @@ class Data : ViewModel(){
     //------------
     private val _showMSG = MutableLiveData<String>()
 
-//    private val _showMSG_Counter = MutableLiveData<Int>()
 
     val showMSG : LiveData<String>
         get() {
-//            val v = (_showMSG_Counter.value?: 0) + 1
-//            val v1 = (showMSG.value?: "")
-//            _showMSG_Counter.value = v
-//            _showMSG.value = "$v1 $v"
             Log.i("_showMSG","_showMSG1")
             return _showMSG
         }
@@ -71,11 +66,6 @@ class DataSet{
                         .also { instance = it }
             }
     }
-
-//    companion object {
-//
-//        fun getInstance() = DataSet()
-//    }
 
 }
 

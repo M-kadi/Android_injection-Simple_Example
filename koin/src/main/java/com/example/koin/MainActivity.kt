@@ -30,25 +30,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.get
-import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import org.koin.core.qualifier.named
-import org.koin.core.qualifier.qualifier
 
 class MainActivity : AppCompatActivity() {
-
-
-
-
-
-
-
-//    val mySharedPreferences1 : qualifier named("constant_str") by inject()
-
-//    val vv = (qualifier = named("secondary"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

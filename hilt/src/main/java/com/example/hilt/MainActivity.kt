@@ -127,8 +127,6 @@ class MainActivity : AppCompatActivity() {
     inner class TestViewModel{
         fun test(){
             lifecycle.addObserver(viewModel)
-//        viewModel.showTextDataNotifier.observe(this, textDataObserver)
-//        btn_fetch.setOnClickListener { viewModel.fetchValue() }
             ///
             viewModel.getCounter().observe(this@MainActivity, Observer {
                 txt1122.setText("Count is "+it)
@@ -185,8 +183,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 dialog.show()
 
-
-//            onSave()
 
                 btnsheet.editUser.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
                     val hasEnterOrGo = keyCode == KeyEvent.KEYCODE_ENTER || keyCode == EditorInfo.IME_ACTION_GO
