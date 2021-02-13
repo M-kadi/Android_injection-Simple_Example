@@ -53,19 +53,4 @@ abstract class UserRoomDatabase : RoomDatabase() {
     }
   }
 }
-/*
-fun getDatabase(context: Context): UserRoomDatabase {
-            // if the INSTANCE is not null, then return it,
-            // if it is, then create the database
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        UserRoomDatabase::class.java,
-                        "user_database"
-                    ).build()
-                INSTANCE = instance
-                // return instance
-                instance
-            }
-        }
-* */
+

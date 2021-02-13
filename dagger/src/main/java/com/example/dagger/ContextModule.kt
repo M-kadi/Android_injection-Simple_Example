@@ -42,15 +42,6 @@ class ContextModule(private val context: Context) {
         return 2
     }
 
-//    // Inject room
-//    @Provides
-//    @Singleton
-//    fun provideUserDao(@ApplicationContext appContext: Context): UserDao =
-//        UserRoomDatabase.getDatabase(appContext).userDao()
-//
-//    @Provides
-//    @Singleton
-//    fun provideUserRepository(userDao: UserDao): UserRepository = UserRepository(userDao)
 
 }
 

@@ -6,14 +6,10 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class MyApp : Application() {
-//    var myComponent: MyComponent? = null
-//        private set
 
     override fun onCreate() {
         super.onCreate()
 
-//        myComponent = DaggerMyComponent
-//            .builder().build()
 
         startKoin {
             androidContext(this@MyApp)

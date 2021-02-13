@@ -180,18 +180,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
-/*
-                fun onSave1(){
-                    editUser.text = btnsheet.editWord.text
 
-                    btnsheet.btnSave.hideKeyboard()
-
-                    dialog.dismiss()
-                }
-*/
-//            btnsheet.setOnClickListener {
-//                onSave()
-//            }
                 btnsheet.btnSave.setOnClickListener {
                     onSave()
                     btnsheet.btnSave.hideKeyboard()
@@ -199,8 +188,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 dialog.show()
 
-
-//            onSave()
 
                 btnsheet.editUser.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
                     val hasEnterOrGo = keyCode == KeyEvent.KEYCODE_ENTER || keyCode == EditorInfo.IME_ACTION_GO
@@ -213,36 +200,7 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-/*
-            btnSave.setOnClickListener {
-                GlobalScope.launch {
-                    val user = editUser.text.toString()
-                    when {
-                        user.isBlank() ->
-                            this@MainActivity.runOnUiThread(java.lang.Runnable {
-                                Toast.makeText(this@MainActivity, "Set User Name", Toast.LENGTH_SHORT)
-                                    .show()
-                            })
-                        else -> {
-                            userDao.insert(com.example.koin.room.User(user))
-                            // try to touch View of UI thread
-                            this@MainActivity.runOnUiThread(java.lang.Runnable {
-                                editUser.setText("")
-                                editUser.requestFocus()
-                            })
 
-                        }
-                    }
-                }
-            }
-            editUser.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
-                val hasEnterOrGo = keyCode == KeyEvent.KEYCODE_ENTER || keyCode == EditorInfo.IME_ACTION_GO
-                return@OnKeyListener when (event.action == KeyEvent.ACTION_DOWN && hasEnterOrGo) {
-                    true -> btnSave.callOnClick().let { true }
-                    false -> false
-                }
-            })
-*/
             val adapter = UserListAdapter(this@MainActivity).apply {
                 registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
                     override fun onChanged() {
@@ -266,7 +224,7 @@ class MainActivity : AppCompatActivity() {
 //            btn_insert_room1.setOnClickListener {
 //      val wordDao = WordRoomDatabase.getDatabase(requireContext()).wordDao()
                 GlobalScope.launch {
-//            wordDao.run {
+//            userDao.run {
 //
 //            }
                     userDao.insert(com.example.koin.room.User("hello10000"))

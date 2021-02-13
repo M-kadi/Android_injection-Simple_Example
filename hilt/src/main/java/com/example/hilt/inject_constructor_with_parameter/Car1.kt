@@ -10,10 +10,6 @@ class Car1 @Inject constructor(@Named("driver name") var name: String){
         Log.i("ooooo", "maker car1 $name " + this)
     }
 
-//    fun drive(){
-//        Log.i("TAG", "drive  ----okokok---------------------------- $name")
-//    }
-
     init {
         Log.d("TAG", "Car1 Constructor ----okokok---------------------------- $name")
     }

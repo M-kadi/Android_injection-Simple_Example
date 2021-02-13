@@ -10,10 +10,6 @@ class Car1 constructor(var name: String){
         Log.i("ooooo","maker car1 $name " + this)
     }
 
-//    fun drive(){
-//        Log.i("ooooo","car1 drive  ----okokok---------------------------- $name")
-//    }
-
     init {
         Log.d("ooooo", "car1 Constructor ----okokok---------------------------- $name")
     }

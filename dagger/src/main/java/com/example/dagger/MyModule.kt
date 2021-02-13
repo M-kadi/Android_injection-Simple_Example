@@ -28,12 +28,6 @@ internal class MyModule {
     fun provideConstantStrString(): String = "my constant_str"
 
 
-    //    @Provides
-    //    IDriver2 bindDriver3();
-//    @Provides
-//    fun provideCar1(@Named("driver name") name: String): Car1 {
-//        return Car1(name)
-//    }
 
     // Inject room
     @Provides

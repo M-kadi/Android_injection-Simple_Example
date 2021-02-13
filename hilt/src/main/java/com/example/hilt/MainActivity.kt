@@ -140,60 +140,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-/*
-    // room
-    private fun testRoom(){
-        test_show_room()
-        test_insert_room()
-    }
-
-    // room
-    @Inject
-    lateinit var userDao : UserDao
-    fun test_insert_room(){
-//        btn_insert_room1.setOnClickListener {
-//      val wordDao = WordRoomDatabase.getDatabase(requireContext()).wordDao()
-            GlobalScope.launch {
-//            wordDao.run {
-//
-//            }
-                userDao.insert(com.example.hilt.room.User("hello10000"))
-                userDao.insert(com.example.hilt.room.User("hello12000"))
-                userDao.insert(com.example.hilt.room.User("hello13000"))
-
-            }
-//        }
-    }
-
-    @Inject
-    lateinit var repository : UserRepository
-    fun test_show_room(){
-        val allUsers =
-            repository.allUsers.flowOn(Dispatchers.Main)
-                .asLiveData(context = GlobalScope.coroutineContext)
-
-//        btn_show_room1.setOnClickListener {
-            allUsers
-                .observe(this, Observer {
-                    // foo is still nullable
-                    // get value of LiveData : one times : after MainActivity onCreate
-                    it.forEach { Log.i("fff", "nullable " +  it.usr_name) }
-                })
-
-            allUsers
-                .nonNull()
-                .observe(this, {
-                    // Now foo is non-null
-                    // get value of LiveData : always
-                    it.forEach { Log.i("fff", "non-null " +  it.usr_name) }
-
-                    Log.i("fff", "non-null size " +  it.size)
-                })
-//        }
-    }
-
-    */
-
     private val usersViewModel : UsersViewModel by viewModels()
     @Inject
     lateinit var userDao : UserDao
@@ -231,18 +177,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
-/*
-                fun onSave1(){
-                    editUser.text = btnsheet.editWord.text
 
-                    btnsheet.btnSave.hideKeyboard()
-
-                    dialog.dismiss()
-                }
-*/
-//            btnsheet.setOnClickListener {
-//                onSave()
-//            }
                 btnsheet.btnSave.setOnClickListener {
                     onSave()
                     btnsheet.btnSave.hideKeyboard()
@@ -263,37 +198,6 @@ class MainActivity : AppCompatActivity() {
 
 
             }
-
-/*
-            btnSave.setOnClickListener {
-                GlobalScope.launch {
-                    val user = editUser.text.toString()
-                    when {
-                        user.isBlank() ->
-                            this@MainActivity.runOnUiThread(java.lang.Runnable {
-                                Toast.makeText(this@MainActivity, "Set User Name", Toast.LENGTH_SHORT)
-                                    .show()
-                            })
-                        else -> {
-                            userDao.insert(com.example.hilt.room.User(user))
-                            // try to touch View of UI thread
-                            this@MainActivity.runOnUiThread(java.lang.Runnable {
-                                editUser.setText("")
-                                editUser.requestFocus()
-                            })
-
-                        }
-                    }
-                }
-            }
-            editUser.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
-                val hasEnterOrGo = keyCode == KeyEvent.KEYCODE_ENTER || keyCode == EditorInfo.IME_ACTION_GO
-                return@OnKeyListener when (event.action == KeyEvent.ACTION_DOWN && hasEnterOrGo) {
-                    true -> btnSave.callOnClick().let { true }
-                    false -> false
-                }
-            })
-*/
 
             val adapter = UserListAdapter(this@MainActivity).apply {
                 registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {

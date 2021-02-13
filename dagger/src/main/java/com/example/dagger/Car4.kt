@@ -12,9 +12,6 @@ class Car4 constructor(@Named("driver name") var name: String){
         Log.i("ooooo", "maker car4 $name " + this)
     }
 
-//    fun drive(){
-//        Log.i("TAG", "drive  ----okokok---------------------------- $name")
-//    }
 
     init {
         Log.d("TAG", "Car4 Constructor ----okokok---------------------------- $name")

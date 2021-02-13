@@ -11,9 +11,4 @@ val MyViewModelModule = module {
     }
 
 
-
-//    viewModel{ (handle: SavedStateHandle) ->
-//        MyViewModel(handle, get())
-//    }
-
 }

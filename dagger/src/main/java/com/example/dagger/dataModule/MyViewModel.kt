@@ -11,18 +11,6 @@ class MyViewModel @Inject constructor(
 ) :
     ViewModel(), LifecycleObserver {
 
-//    @Inject
-//    lateinit var data: Data
-
-//    private val showTextLiveData = savedStateHandle.getLiveData<String>(KEY)
-
-//    val showTextDataNotifier: LiveData<String>
-//        get() = showTextLiveData
-//
-//    fun fetchValue() {
-//        showTextLiveData.value = data.getCounter().toString()//repository.getMessage()
-//    }
-
     fun addCounter() {
         data.addCounter()
     }

@@ -168,19 +168,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    /*
-    @Inject
-    lateinit var data: Data
-    private fun initMyViewModule2() {
-        data.getCounter().observe(this, Observer {
-            txt1122.setText("Count is "+it)
-        })
-
-        btn22.setOnClickListener {
-            data.addCounter()
-        }
-    }
-    */
 
     @Inject
     lateinit var usersViewModel : UsersViewModel
@@ -199,37 +186,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         private fun testRoomUserList(){
-/*
-            btnSave.setOnClickListener {
-                GlobalScope.launch {
-                    val user = editUser.text.toString()
-                    when {
-                        user.isBlank() ->
-                            this@MainActivity.runOnUiThread(java.lang.Runnable {
-                                Toast.makeText(this@MainActivity, "Set User Name", Toast.LENGTH_SHORT)
-                                    .show()
-                            })
-                        else -> {
-                            userDao.insert(com.example.dagger.room.User(user))
-                            // try to touch View of UI thread
-                            this@MainActivity.runOnUiThread(java.lang.Runnable {
-                                editUser.setText("")
-                                editUser.requestFocus()
-                            })
 
-                        }
-                    }
-                }
-            }
 
-            editUser.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
-                val hasEnterOrGo = keyCode == KeyEvent.KEYCODE_ENTER || keyCode == EditorInfo.IME_ACTION_GO
-                return@OnKeyListener when (event.action == KeyEvent.ACTION_DOWN && hasEnterOrGo) {
-                    true -> btnSave.callOnClick().let { true }
-                    false -> false
-                }
-            })
-*/
             btnAdd.setOnClickListener {
                 val btnsheet = layoutInflater.inflate(R.layout.input_user, null)
                 val dialog = BottomSheetDialog(this@MainActivity)
@@ -251,18 +209,8 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
-/*
-                fun onSave1(){
-                    editUser.text = btnsheet.editWord.text
 
-                    btnsheet.btnSave.hideKeyboard()
 
-                    dialog.dismiss()
-                }
-*/
-//            btnsheet.setOnClickListener {
-//                onSave()
-//            }
                 btnsheet.btnSave.setOnClickListener {
                     onSave()
                     btnsheet.btnSave.hideKeyboard()
